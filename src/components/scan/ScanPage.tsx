@@ -17,7 +17,7 @@ export function ScanPage() {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analysis, setAnalysis] = useState<NutritionAnalysis | null>(null);
-  const { takePhoto, selectFromGallery, isCapturing } = useCamera();
+  const { takePhoto, selectFromGallery, isCapturing, isNative, isCapacitorAvailable } = useCamera();
   const { user } = useAuth();
 
   const handleImageCapture = async (imageResult: any) => {
@@ -173,55 +173,67 @@ export function ScanPage() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
-              <Button 
-                onClick={handleTakePhoto}
-                className="w-full"
-                size="lg"
-                disabled={isCapturing}
-              >
-                {isCapturing ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Opening Camera...
-                  </>
-                ) : (
-                  <>
-                    <Camera className="mr-2 h-4 w-4" />
-                    Take Photo
-                  </>
-                )}
-              </Button>
+              {/* Show native camera buttons only on mobile */}
+              {isNative && isCapacitorAvailable && (
+                <>
+                  <Button 
+                    onClick={handleTakePhoto}
+                    className="w-full"
+                    size="lg"
+                    disabled={isCapturing}
+                  >
+                    {isCapturing ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Opening Camera...
+                      </>
+                    ) : (
+                      <>
+                        <Camera className="mr-2 h-4 w-4" />
+                        Take Photo
+                      </>
+                    )}
+                  </Button>
+                  
+                  <Button 
+                    onClick={handleSelectFromGallery}
+                    variant="outline"
+                    className="w-full"
+                    size="lg"
+                    disabled={isCapturing}
+                  >
+                    <ImageIcon className="mr-2 h-4 w-4" />
+                    Choose from Gallery
+                  </Button>
+                </>
+              )}
               
-              <Button 
-                onClick={handleSelectFromGallery}
-                variant="outline"
-                className="w-full"
-                size="lg"
-                disabled={isCapturing}
-              >
-                <ImageIcon className="mr-2 h-4 w-4" />
-                Choose from Gallery
-              </Button>
-              
-              {/* Web fallback file input */}
+              {/* Web file input - always available */}
               <div className="relative">
                 <input
                   type="file"
                   accept="image/*"
+                  capture="environment"
                   onChange={handleFileInput}
                   className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                   disabled={isCapturing}
                 />
                 <Button 
-                  variant="secondary"
+                  variant={(!isNative || !isCapacitorAvailable) ? "default" : "secondary"}
                   className="w-full"
                   size="lg"
                   disabled={isCapturing}
                 >
-                  <ImageIcon className="mr-2 h-4 w-4" />
-                  Upload File (Web)
+                  <Camera className="mr-2 h-4 w-4" />
+                  {(!isNative || !isCapacitorAvailable) ? "Take Photo / Upload" : "Upload File"}
                 </Button>
               </div>
+              
+              {(!isNative || !isCapacitorAvailable) && (
+                <p className="text-xs text-muted-foreground text-center">
+                  On mobile devices, camera and gallery access will be available
+                </p>
+              )}
             </CardContent>
           </Card>
         </div>
