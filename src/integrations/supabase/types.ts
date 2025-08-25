@@ -14,7 +14,99 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      meal_history: {
+        Row: {
+          calories: number | null
+          carbs: number | null
+          confidence_score: number | null
+          created_at: string
+          fat: number | null
+          fiber: number | null
+          health_score: number | null
+          id: string
+          image_url: string | null
+          meal_name: string | null
+          protein: number | null
+          rationale: string | null
+          sodium: number | null
+          sugar: number | null
+          user_id: string
+        }
+        Insert: {
+          calories?: number | null
+          carbs?: number | null
+          confidence_score?: number | null
+          created_at?: string
+          fat?: number | null
+          fiber?: number | null
+          health_score?: number | null
+          id?: string
+          image_url?: string | null
+          meal_name?: string | null
+          protein?: number | null
+          rationale?: string | null
+          sodium?: number | null
+          sugar?: number | null
+          user_id: string
+        }
+        Update: {
+          calories?: number | null
+          carbs?: number | null
+          confidence_score?: number | null
+          created_at?: string
+          fat?: number | null
+          fiber?: number | null
+          health_score?: number | null
+          id?: string
+          image_url?: string | null
+          meal_name?: string | null
+          protein?: number | null
+          rationale?: string | null
+          sodium?: number | null
+          sugar?: number | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          age: number | null
+          created_at: string
+          dietary_preferences: string | null
+          full_name: string | null
+          gender: string | null
+          height_cm: number | null
+          id: string
+          updated_at: string
+          user_id: string
+          weight_kg: number | null
+        }
+        Insert: {
+          age?: number | null
+          created_at?: string
+          dietary_preferences?: string | null
+          full_name?: string | null
+          gender?: string | null
+          height_cm?: number | null
+          id?: string
+          updated_at?: string
+          user_id: string
+          weight_kg?: number | null
+        }
+        Update: {
+          age?: number | null
+          created_at?: string
+          dietary_preferences?: string | null
+          full_name?: string | null
+          gender?: string | null
+          height_cm?: number | null
+          id?: string
+          updated_at?: string
+          user_id?: string
+          weight_kg?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
