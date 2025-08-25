@@ -2,111 +2,122 @@
 @tailwind components;
 @tailwind utilities;
 
-/* NutriSnap App Design System - Nutrition focused theme */
+/* NutriSnap App Design System - Enhanced Modern UI */
 
 @layer base {
   :root {
-    /* Light theme - soft pastels with nutrition-focused green/orange accents */
-    --background: 120 20% 97%;
-    --foreground: 120 10% 15%;
+    /* Modern gradient background system */
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
 
     --card: 0 0% 100%;
-    --card-foreground: 120 10% 15%;
+    --card-foreground: 224 71.4% 4.1%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 120 10% 15%;
+    --popover-foreground: 224 71.4% 4.1%;
 
-    /* Soft green primary - nutrition theme */
-    --primary: 120 40% 35%;
-    --primary-foreground: 0 0% 100%;
+    /* Vibrant nutrition-focused palette */
+    --primary: 142 76% 36%;
+    --primary-glow: 142 85% 55%;
+    --primary-foreground: 356 29% 98%;
 
-    /* Light green secondary */
-    --secondary: 120 30% 94%;
-    --secondary-foreground: 120 40% 25%;
+    --secondary: 47 96% 89%;
+    --secondary-foreground: 224 71.4% 4.1%;
 
-    --muted: 120 15% 95%;
-    --muted-foreground: 120 8% 45%;
+    --accent: 47 100% 80%;
+    --accent-foreground: 224 71.4% 4.1%;
 
-    /* Orange accent for energy/calories */
-    --accent: 30 85% 85%;
-    --accent-foreground: 30 50% 25%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
 
-    --border: 120 20% 88%;
-    --input: 120 20% 92%;
-    --ring: 120 40% 35%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 142 76% 36%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    /* Success green for good nutritional choices */
-    --success: 120 60% 45%;
-    --success-foreground: 0 0% 100%;
+    /* Enhanced nutrition colors */
+    --success: 142 71% 45%;
+    --success-foreground: 356 29% 98%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 48 96% 89%;
 
-    /* Warning orange for moderate choices */
-    --warning: 30 90% 55%;
-    --warning-foreground: 30 20% 15%;
+    --protein: 280 100% 70%;
+    --carbs: 200 100% 70%;
+    --fat: 60 100% 70%;
+    --fiber: 120 60% 64%;
 
-    /* Custom nutrition colors */
-    --protein: 280 60% 55%;
-    --carbs: 200 80% 55%;
-    --fat: 60 80% 55%;
-    --fiber: 120 50% 45%;
-
-    /* Gradient backgrounds */
-    --gradient-primary: linear-gradient(135deg, hsl(120 40% 35%), hsl(150 40% 40%));
-    --gradient-accent: linear-gradient(135deg, hsl(30 85% 85%), hsl(45 80% 88%));
+    /* Advanced gradients and effects */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--secondary)));
+    --gradient-hero: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--muted)));
+    
+    /* Elegant shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.4);
+    --shadow-soft: 0 4px 20px -8px hsl(220 14.3% 45.9% / 0.15);
+    --shadow-card: 0 8px 32px -8px hsl(var(--foreground) / 0.08);
   }
 
   .dark {
-    /* Dark theme - nutrition focused with dark backgrounds */
-    --background: 120 15% 8%;
-    --foreground: 120 10% 92%;
+    /* Modern dark theme with enhanced colors */
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
 
-    --card: 120 15% 12%;
-    --card-foreground: 120 10% 92%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
 
-    --popover: 120 15% 12%;
-    --popover-foreground: 120 10% 92%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
 
-    /* Bright green primary for dark mode */
-    --primary: 120 60% 50%;
-    --primary-foreground: 120 15% 8%;
+    --primary: 142 85% 55%;
+    --primary-glow: 142 90% 65%;
+    --primary-foreground: 220.9 39.3% 11%;
 
-    --secondary: 120 15% 18%;
-    --secondary-foreground: 120 60% 80%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
 
-    --muted: 120 10% 16%;
-    --muted-foreground: 120 8% 65%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
 
-    /* Orange accent for dark mode */
-    --accent: 30 80% 60%;
-    --accent-foreground: 30 20% 15%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
 
-    --destructive: 0 75% 55%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
 
-    --border: 120 15% 22%;
-    --input: 120 15% 16%;
-    --ring: 120 60% 50%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 142 85% 55%;
 
-    /* Success/warning colors for dark mode */
-    --success: 120 70% 50%;
-    --success-foreground: 120 15% 8%;
+    /* Enhanced dark mode colors */
+    --success: 142 85% 55%;
+    --success-foreground: 220.9 39.3% 11%;
 
-    --warning: 30 90% 60%;
-    --warning-foreground: 30 20% 15%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 48 96% 89%;
 
-    /* Nutrition colors for dark mode */
-    --protein: 280 70% 65%;
-    --carbs: 200 90% 65%;
-    --fat: 60 90% 65%;
-    --fiber: 120 60% 55%;
+    --protein: 280 100% 75%;
+    --carbs: 200 100% 75%;
+    --fat: 60 100% 75%;
+    --fiber: 120 60% 70%;
 
-    /* Dark gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(120 60% 50%), hsl(150 60% 55%));
-    --gradient-accent: linear-gradient(135deg, hsl(30 80% 60%), hsl(45 80% 65%));
+    /* Dark mode gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-secondary: linear-gradient(135deg, hsl(215 27.9% 25%), hsl(215 27.9% 20%));
+    --gradient-hero: linear-gradient(180deg, hsl(var(--background)), hsl(215 27.9% 12%));
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(215 27.9% 8%));
+    
+    /* Dark shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.2);
+    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.3);
+    --shadow-soft: 0 4px 20px -8px hsl(0 0% 0% / 0.3);
+    --shadow-card: 0 8px 32px -8px hsl(0 0% 0% / 0.3);
   }
 }
 
@@ -117,25 +128,87 @@
 
   body {
     @apply bg-background text-foreground font-sans;
+    background: var(--gradient-hero);
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 
   html {
-    /* Smooth scrolling for mobile */
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
   }
 }
 
-/* Mobile-optimized utilities */
+@layer components {
+  /* Enhanced button variants */
+  .btn-gradient {
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-elegant);
+    @apply text-primary-foreground border-0 transition-all duration-300 hover:scale-105;
+  }
+  
+  .btn-glow {
+    @apply relative overflow-hidden transition-all duration-300;
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .btn-glow::before {
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    content: '';
+    background: var(--gradient-primary);
+  }
+  
+  .btn-glow:hover::before {
+    @apply opacity-20;
+  }
+  
+  /* Enhanced card styles */
+  .card-gradient {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+    @apply border-0 backdrop-blur-sm;
+  }
+  
+  .glass-effect {
+    @apply backdrop-blur-xl border border-white/10;
+    background: hsl(var(--card) / 0.7);
+    box-shadow: var(--shadow-soft);
+  }
+  
+  /* Text effects */
+  .text-gradient {
+    background: var(--gradient-primary);
+    @apply bg-clip-text text-transparent font-bold;
+  }
+  
+  /* Animation classes */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  .animate-bounce-subtle {
+    animation: bounce-subtle 2s ease-in-out infinite;
+  }
+}
+
 @layer utilities {
+  /* Enhanced gradients */
   .gradient-primary {
     background: var(--gradient-primary);
   }
   
-  .gradient-accent {
-    background: var(--gradient-accent);
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
   }
 
+  /* Mobile utilities */
   .mobile-safe {
     padding-bottom: env(safe-area-inset-bottom);
     padding-top: env(safe-area-inset-top);
@@ -146,14 +219,39 @@
     padding-right: max(1rem, env(safe-area-inset-right));
   }
 
-  /* Loading animation */
+  /* Enhanced animations */
   .pulse-slow {
     animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
-  /* Custom scrollbar for mobile */
+  .hover-lift {
+    @apply transition-all duration-300 hover:scale-105 hover:-translate-y-1;
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .hover-lift:hover {
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Custom scrollbar */
   .scrollbar-thin {
     scrollbar-width: thin;
     scrollbar-color: hsl(var(--muted-foreground)) hsl(var(--muted));
   }
+}
+
+/* Keyframe animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+  from { box-shadow: var(--shadow-elegant); }
+  to { box-shadow: var(--shadow-glow); }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
 }

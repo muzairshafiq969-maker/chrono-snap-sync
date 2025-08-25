@@ -27,19 +27,22 @@ export function NutritionResults({ analysis, imageUrl, onNewScan }: NutritionRes
   const confidencePercentage = Math.round(analysis.confidenceScore * 100);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8 animate-fade-in">
       {/* Header */}
-      <div className="text-center space-y-2">
-        <h2 className="text-2xl font-bold">{analysis.mealName}</h2>
-        <div className="flex items-center justify-center space-x-2">
-          <Badge variant={confidencePercentage > 70 ? "default" : "secondary"}>
+      <div className="text-center space-y-4">
+        <h2 className="text-3xl font-bold text-gradient animate-slide-up">{analysis.mealName}</h2>
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <Badge 
+            variant={confidencePercentage > 70 ? "default" : "secondary"}
+            className="px-3 py-1 text-sm bg-gradient-primary text-primary-foreground border-0 shadow-soft"
+          >
             {confidencePercentage}% Confidence
           </Badge>
           <Badge 
             variant="outline" 
-            className={`${getHealthScoreColor(analysis.healthScore)} border-current`}
+            className={`px-3 py-1 text-sm ${getHealthScoreColor(analysis.healthScore)} border-current hover-lift`}
           >
-            <span className="flex items-center space-x-1">
+            <span className="flex items-center space-x-2">
               {getHealthScoreIcon(analysis.healthScore)}
               <span>Health Score: {analysis.healthScore}/100</span>
             </span>
@@ -49,13 +52,13 @@ export function NutritionResults({ analysis, imageUrl, onNewScan }: NutritionRes
 
       {/* Image */}
       {imageUrl && (
-        <Card>
-          <CardContent className="p-4">
-            <div className="aspect-video w-full max-w-md mx-auto rounded-lg overflow-hidden">
+        <Card className="card-gradient border-0 shadow-card overflow-hidden hover-lift">
+          <CardContent className="p-6">
+            <div className="aspect-video w-full max-w-md mx-auto rounded-2xl overflow-hidden shadow-soft">
               <img 
                 src={imageUrl} 
                 alt={analysis.mealName} 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
           </CardContent>
@@ -63,33 +66,33 @@ export function NutritionResults({ analysis, imageUrl, onNewScan }: NutritionRes
       )}
 
       {/* Main Nutrition Info */}
-      <div className="grid grid-cols-2 gap-4">
-        <Card className="gradient-accent">
-          <CardContent className="p-4 text-center">
-            <div className="text-2xl font-bold text-accent-foreground">
+      <div className="grid grid-cols-2 gap-6">
+        <Card className="bg-gradient-secondary border-0 shadow-elegant hover-lift">
+          <CardContent className="p-6 text-center">
+            <div className="text-3xl font-bold text-accent-foreground">
               {analysis.calories}
             </div>
-            <div className="text-sm text-accent-foreground/80">Calories</div>
+            <div className="text-sm font-medium text-accent-foreground/80">Calories</div>
           </CardContent>
         </Card>
 
-        <Card>
-          <CardContent className="p-4 text-center">
-            <div className="text-2xl font-bold text-primary">
+        <Card className="card-gradient border-0 shadow-card hover-lift">
+          <CardContent className="p-6 text-center">
+            <div className="text-3xl font-bold text-gradient">
               {analysis.healthScore}/100
             </div>
-            <div className="text-sm text-muted-foreground">Health Score</div>
+            <div className="text-sm font-medium text-muted-foreground">Health Score</div>
           </CardContent>
         </Card>
       </div>
 
       {/* Macronutrients */}
-      <Card>
+      <Card className="card-gradient border-0 shadow-card hover-lift">
         <CardHeader>
-          <CardTitle>Macronutrients</CardTitle>
+          <CardTitle className="text-gradient">Macronutrients</CardTitle>
           <CardDescription>Main nutritional components</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-6">
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
               <span className="flex items-center space-x-2">
@@ -163,7 +166,7 @@ export function NutritionResults({ analysis, imageUrl, onNewScan }: NutritionRes
       )}
 
       {/* Action Button */}
-      <Button onClick={onNewScan} className="w-full" size="lg">
+      <Button onClick={onNewScan} className="w-full btn-gradient" size="lg">
         <Camera className="mr-2 h-4 w-4" />
         Analyze Another Meal
       </Button>

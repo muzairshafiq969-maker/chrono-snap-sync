@@ -141,7 +141,7 @@ export function ScanPage() {
 
   if (analysis) {
     return (
-      <div className="pt-20 pb-20 mobile-px">
+      <div className="min-h-screen bg-gradient-hero pt-20 pb-20 mobile-px">
         <NutritionResults 
           analysis={analysis} 
           imageUrl={selectedImage}
@@ -152,33 +152,40 @@ export function ScanPage() {
   }
 
   return (
-    <div className="pt-20 pb-20 mobile-px space-y-6">
-      <div className="text-center space-y-2">
-        <h2 className="text-2xl font-bold">Analyze Your Meal</h2>
-        <p className="text-muted-foreground">
-          Take a photo or upload an image to get instant nutrition analysis
-        </p>
+    <div className="min-h-screen bg-gradient-hero pt-20 pb-20 mobile-px space-y-8 animate-fade-in">
+      <div className="text-center space-y-6">
+        <div className="w-24 h-24 mx-auto bg-gradient-primary rounded-3xl flex items-center justify-center shadow-glow animate-float">
+          <Camera className="w-12 h-12 text-primary-foreground" />
+        </div>
+        <div className="space-y-3">
+          <h2 className="text-3xl font-bold text-gradient">Analyze Your Meal</h2>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            Take a photo or upload an image to get instant nutrition analysis
+          </p>
+        </div>
       </div>
 
       {!selectedImage ? (
-        <div className="space-y-4">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <Camera className="w-5 h-5" />
-                <span>Capture Image</span>
+        <div className="space-y-6">
+          <Card className="card-gradient border-0 shadow-card hover-lift">
+            <CardHeader className="text-center">
+              <CardTitle className="flex items-center justify-center space-x-3 text-xl">
+                <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
+                  <Camera className="w-4 h-4 text-primary-foreground" />
+                </div>
+                <span className="text-gradient">Capture Image</span>
               </CardTitle>
-              <CardDescription>
-                Use your camera or select from gallery
+              <CardDescription className="text-base">
+                Use your camera or select from gallery to get started
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-3">
+            <CardContent className="space-y-4">
               {/* Show native camera buttons only on mobile */}
               {isNative && isCapacitorAvailable && (
                 <>
                   <Button 
                     onClick={handleTakePhoto}
-                    className="w-full"
+                    className="w-full btn-gradient"
                     size="lg"
                     disabled={isCapturing}
                   >
@@ -198,7 +205,7 @@ export function ScanPage() {
                   <Button 
                     onClick={handleSelectFromGallery}
                     variant="outline"
-                    className="w-full"
+                    className="w-full hover-lift border-primary/20 hover:border-primary hover:bg-primary/5"
                     size="lg"
                     disabled={isCapturing}
                   >
@@ -238,24 +245,25 @@ export function ScanPage() {
           </Card>
         </div>
       ) : (
-        <div className="space-y-4">
-          <Card>
-            <CardContent className="p-4">
-              <div className="aspect-square w-full max-w-sm mx-auto rounded-lg overflow-hidden">
+        <div className="space-y-6 animate-scale-in">
+          <Card className="card-gradient border-0 shadow-card overflow-hidden">
+            <CardContent className="p-6">
+              <div className="aspect-square w-full max-w-sm mx-auto rounded-2xl overflow-hidden shadow-soft">
                 <img 
                   src={selectedImage} 
                   alt="Selected meal" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
             </CardContent>
           </Card>
 
-          <div className="flex gap-3">
+          <div className="flex gap-4">
             <Button 
               onClick={resetScan}
               variant="outline"
-              className="flex-1"
+              className="flex-1 hover-lift border-primary/20 hover:border-primary"
+              size="lg"
               disabled={isAnalyzing}
             >
               Choose Different Image
@@ -263,7 +271,8 @@ export function ScanPage() {
             
             <Button 
               onClick={handleAnalyze}
-              className="flex-1"
+              className="flex-1 btn-gradient"
+              size="lg"
               disabled={isAnalyzing || !imageFile}
             >
               {isAnalyzing ? (
